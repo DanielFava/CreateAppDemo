@@ -1,5 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import firebase from '../../services/server/firebaseConnection'
+
+import { Text } from 'react-native-svg'
+
 import { 
   Container,
   Divisao,
@@ -8,23 +12,14 @@ import {
   Menu,
   Base,
   TextoBold,
-  TextoBotao
+  TextoBotao,
+  View_BarChart,
+  View_Base,
+  View_Linha,
+
+  BarChart_SVG,
+  XAxis_SVG
 } from './styles';
-
-import { 
-  Text 
-} from 'react-native-svg'
-
-import { 
-  BarChart, 
-  XAxis, 
-  Grid,
-  StackedBarChart 
-} from 'react-native-svg-charts'
-
-import { 
-  View 
-} from 'react-native'
 
 // Criando Data
 const Date = moment().format('DD/MM/YYYY');
@@ -57,37 +52,19 @@ export default function DashBoard() {
         <Texto>Data: {Date}</Texto>
       </Menu>
       <Base>
-        <View style={{ 
-          width: 430, 
-          height: 1, 
-          backgroundColor: 'black', 
-          marginTop: 30, 
-          marginBottom: -40 }} 
-        />
-        <View style={{ height: 200}}>
-          <BarChart
-            style={{ flex: 1 }}
-            data={data}
-            svg={{ fill: '#0466C8' }}
-            contentInset={{ top: 40, bottom: 15 }}
-            spacing={1}
-            gridMin={0}
+        <View_Base />
+        <View_BarChart>
+          <BarChart_SVG 
+            data={data} 
           >
             <Labels/>
-          </BarChart>
-          <XAxis
+          </BarChart_SVG>
+          <XAxis_SVG
             data={data}
-            formatLabel={(value, index) => index + 1}
-            contentInset={{ left: 20, right: 20 }}
-            svg={{ fontSize: 10, fill: 'black' }}
+            formatLabel={ (value, index) => index + 1 }
           />
-        </View>
-        <View style={{ 
-          width: 430, 
-          height: 1, 
-          backgroundColor: 'black', 
-          marginTop: -30 }} 
-        />
+        </View_BarChart>
+        <View_Linha />
       </Base>
     </Container>
   )
