@@ -8,15 +8,57 @@ import {
   Menu,
   Base,
   TextoBold,
-  TextoBotao
+  TextoBotao,
+  Input,
+  InputObs
 } from '../CadastroClientes/styles';
 
 export default function DashBoard() {
   return (
-    <Container>
-      <Base>
-        
-      </Base>
+    <Container
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+    >
+
+      <Input 
+        placeholder="NOME..."
+      />  
+      <Input 
+        placeholder="TELEFONE..."
+      />  
+      <Input 
+        placeholder="RUA..."
+      />  
+      <Input 
+        placeholder="BAIRRO..."
+      />  
+      <Input 
+        placeholder="CIDADE..."
+      />  
+      <Input 
+        placeholder="NUMERO..."
+      />  
+      <Input 
+        placeholder="COMPLEMENTO..."
+      />  
+      <Input 
+        placeholder="DESCRIÇÃO DA MONTAGEM..."
+      />  
+      <Input 
+        placeholder="VALOR..."
+      />  
+      <InputObs 
+        placeholder="OBSERVAÇÃO..."
+      />  
+
+      <Divisao>
+        <Botao>
+          <TextoBotao>Salvar</TextoBotao>
+        </Botao>
+        <Botao>
+          <TextoBotao>Salvar e Enviar</TextoBotao>
+        </Botao>
+      </Divisao>
+
     </Container>
   )
 }
