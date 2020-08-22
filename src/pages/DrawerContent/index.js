@@ -1,23 +1,20 @@
 import React from 'react';
+
 import {
-  View,
-  Text,
-  StyleSheet
-} from 'react-native'
-import {
-  DrawerContentScrollView,
-  DrawerItem,
   DrawerItemList
 } from '@react-navigation/drawer'
 
+import { 
+  Container
+} from './Styles'
+
 function DrawerContent({...props}) {
   return(
-    <DrawerContentScrollView>
-      <Text> Ola </Text>
-      <Text> Bem Vindo ! </Text>
+    <Container>
       <DrawerItemList {...props} />
-    </DrawerContentScrollView>
+    </Container>
   )
 }
+
 
 export default DrawerContent;

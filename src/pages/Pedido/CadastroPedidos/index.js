@@ -8,7 +8,7 @@ import {
   Base,
   TextoBold,
   TextoBotao
-} from '../CadastroPedidos/styles';
+} from '../CadastroPedidos/Styles';
 
 export default function DashBoard() {
   return (

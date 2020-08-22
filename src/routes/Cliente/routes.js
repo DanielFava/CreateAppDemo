@@ -2,9 +2,9 @@ import React from 'react';
 import colors from '../../configs/themes/cor';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import CadastroClientes from '../../pages/Cliente/CadastroClientes/index';
-import HomeClientes from '../../pages/Cliente/ListaClientes/index';
-import PendenteClientes from '../../pages/Cliente/PendenteClientes/index';
+import CadastroClientes from '../../pages/Cliente/CadastroClientes/Index';
+import HomeClientes from '../../pages/Cliente/ListaClientes/Index';
+import PendenteClientes from '../../pages/Cliente/PendenteClientes/Index';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,7 +13,7 @@ import {
   Container,
   Botao,
   Texto 
-} from '../Cliente/styles'; 
+} from '../Cliente/Styles'; 
 
 const HomeStack = createStackNavigator();
 const CadastroStack = createStackNavigator();

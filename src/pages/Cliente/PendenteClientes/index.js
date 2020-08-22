@@ -9,7 +9,7 @@ import {
   Base,
   TextoBold,
   TextoBotao
-} from '../PendenteClientes/styles';
+} from '../PendenteClientes/Styles';
 
 export default function DashBoard() {
   return (

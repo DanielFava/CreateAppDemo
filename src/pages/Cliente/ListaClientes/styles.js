@@ -48,3 +48,7 @@ export const TextoBold = styled.Text`
   font-size: 16px;
   margin-bottom: 10px;
 `;
+
+export const Flatlist = styled.FlatList`
+
+`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import firebase from '../../services/server/firebaseConnection'
+import firebase from '../../services/server/FirebaseConnection'
 
 import { Text } from 'react-native-svg'
 
@@ -19,7 +19,7 @@ import {
 
   BarChart_SVG,
   XAxis_SVG
-} from './styles';
+} from './Styles';
 
 // Criando Data
 const Date = moment().format('DD/MM/YYYY');

@@ -2,9 +2,9 @@ import React from 'react';
 import colors from '../../configs/themes/cor';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import CadastroPedidos from '../../pages/Pedido/CadastroPedidos/index';
-import HomePedidos from '../../pages/Pedido/ListaPedidos/index';
-import PendentePedidos from '../../pages/Pedido/PendentePedidos/index';
+import CadastroPedidos from '../../pages/Pedido/CadastroPedidos/Index';
+import HomePedidos from '../../pages/Pedido/ListaPedidos/Index';
+import PendentePedidos from '../../pages/Pedido/PendentePedidos/Index';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,7 +13,7 @@ import {
   Container,
   Botao,
   Texto 
-} from '../Pedido/styles'; 
+} from '../Pedido/Styles'; 
 
 const HomeStack = createStackNavigator();
 const CadastroStack = createStackNavigator();

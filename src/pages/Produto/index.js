@@ -8,7 +8,7 @@ import {
   Base,
   TextoBold,
   TextoBotao
-} from '../Produto/styles';
+} from '../Produto/Styles';
 
 export default function DashBoard() {
   return (
