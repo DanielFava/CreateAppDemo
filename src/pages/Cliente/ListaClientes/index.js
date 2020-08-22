@@ -21,7 +21,9 @@ export default function DashBoard() {
 
   useEffect(() => {
     async function dados(){
-      await firebase.database().ref('clientes').on("value", (snapshot) => {
+      await firebase.database().ref('clientes').on('value', (snapshot) => {
+        setClientes([]);
+        
         snapshot.forEach((chilItem) => {
           let data = {
             key: chilItem.key,
@@ -35,21 +37,22 @@ export default function DashBoard() {
             observacao: chilItem.val().observacao
           }
 
-          setClientes([...clientes, data])
+          setClientes(oldArray => [...oldArray, data])
         })
       })
     }
+
+    dados();
+    
   }, []);
 
   return (
     <Container>
-      <Base>
-        <Flatlist 
-          keyExtractor={item => item.key.toString()}
-          data={clientes}
-          renderItem={ ({item}) => ( <Listagem data={item}/> ) }     
-        />
-      </Base>
+      <Flatlist 
+        keyExtractor={item => item.key.toString()}
+        data={clientes}
+        renderItem={ ({item}) => ( <Listagem data={item}/> ) }     
+      />
     </Container>
   )
 }

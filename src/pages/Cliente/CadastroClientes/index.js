@@ -26,7 +26,7 @@ export default function DashBoard() {
   const [complemento, setComplemento] = useState('')
   const [observacao, setObservacao] = useState('')
 
-  async function cadastrar(){
+  async function cadastrar({ navigation }){
     if (nome !== ''){
       let clientes = await firebase.database().ref('clientes');
       let chave = clientes.push().key;
@@ -52,7 +52,8 @@ export default function DashBoard() {
       setObservacao('');
 
       alert('Cadastrado Com Sucesso !');
-
+      
+      // navigation.navigate('Lista');
     }
     else {
       alert('Nome é obrigatorio!');
