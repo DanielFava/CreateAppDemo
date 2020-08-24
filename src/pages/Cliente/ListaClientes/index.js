@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import firebase from '../../../services/server/FirebaseConnection'
 import Listagem from './Listagem'
+import { Alert } from 'react-native'
 
 import { 
   Container,
@@ -12,12 +13,14 @@ import {
   Base,
   TextoBold,
   TextoBotao,
-  Flatlist
+  Flatlist,
+  Loading,
 } from '../ListaClientes/Styles';
 
 export default function DashBoard() {
 
   const [clientes, setClientes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function dados(){
@@ -37,8 +40,11 @@ export default function DashBoard() {
             observacao: chilItem.val().observacao
           }
 
-          setClientes(oldArray => [...oldArray, data])
+          setClientes(oldArray => [...oldArray, data].reverse())
         })
+
+        setLoading(false)
+
       })
     }
 
@@ -46,13 +52,38 @@ export default function DashBoard() {
     
   }, []);
 
+  async function handleDelete(key){
+    await Alert.alert(
+      "Alerta",
+      "Deseja Realmente Excluir",
+      [
+        {
+          text: "Cancelar"
+        },
+        { 
+          text: "OK", 
+          onPress: () => firebase.database().ref('clientes').child(key).remove()
+        }
+      ],
+      { cancelable: false }
+    );
+  }
+
   return (
     <Container>
-      <Flatlist 
-        keyExtractor={item => item.key.toString()}
-        data={clientes}
-        renderItem={ ({item}) => ( <Listagem data={item}/> ) }     
-      />
+      { loading ? 
+        ( 
+          <Loading /> 
+        ) : 
+        (
+          <Flatlist 
+            keyExtractor={item => item.key.toString()}
+            data={clientes}
+            renderItem={ ({item}) => ( <Listagem data={item} deleteItem={handleDelete} /> ) }
+          />
+        ) 
+      }
+      
     </Container>
   )
 }

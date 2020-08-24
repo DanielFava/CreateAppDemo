@@ -9,8 +9,15 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const Flatlist = styled.FlatList`
+export const Flatlist = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false
+})`
   width: 90%;
   height: 90%;
   margin: 10px;
 `;
+
+export const Loading = styled.ActivityIndicator.attrs({
+  color: colors.Black,
+  size: 50,
+})``;

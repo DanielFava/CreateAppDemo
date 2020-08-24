@@ -4,18 +4,18 @@ import firebase from '../../../services/server/FirebaseConnection'
 
 import { 
   Container,
+  View,
   Divisao,
-  Botao,
+  InputRNE,
+  InputRNEObs,
+  BotaoEnviar,
+  BotaoSalvar,
   Texto,
-  Menu,
-  Base,
   TextoBold,
-  TextoBotao,
-  Input,
-  InputObs
+  TextoBotao
 } from '../CadastroClientes/Styles'
 
-export default function DashBoard() {
+export default function DashBoard({ navigation }) {
 
   const [nome, setNome] = useState('')
   const [telefone, setTelefone] = useState('')
@@ -26,8 +26,11 @@ export default function DashBoard() {
   const [complemento, setComplemento] = useState('')
   const [observacao, setObservacao] = useState('')
 
-  async function cadastrar({ navigation }){
+  const [error, setError] = useState('')
+
+  async function cadastrar(){
     if (nome !== ''){
+
       let clientes = await firebase.database().ref('clientes');
       let chave = clientes.push().key;
 
@@ -42,21 +45,22 @@ export default function DashBoard() {
         observacao: observacao
       });
 
-      setNome('');
-      setTelefone('');
-      setRua('');
-      setBairro('');
-      setCidade('');
-      setNumero('');
-      setComplemento('');
-      setObservacao('');
+      setNome('')
+      setTelefone('')
+      setRua('')
+      setBairro('')
+      setCidade('')
+      setNumero('')
+      setComplemento('')
+      setObservacao('')
+      setError('')
 
       alert('Cadastrado Com Sucesso !');
-      
-      // navigation.navigate('Lista');
+
+      navigation.goBack();
     }
     else {
-      alert('Nome é obrigatorio!');
+      setError('Nome Invalido');
     }
   }
 
@@ -64,56 +68,53 @@ export default function DashBoard() {
     <Container
       behavior={Platform.OS == "ios" ? "padding" : "height"}
     >
-
-      <Input 
-        placeholder="NOME..."
-        onChangeText={(texto) => setNome(texto)}
-        value={nome}
-      />  
-      <Input 
-        placeholder="TELEFONE..."
-        onChangeText={(texto) => setTelefone(texto)}
-        keyboardType="numeric"
-        value={telefone}
-      />  
-      <Input 
-        placeholder="RUA..."
-        onChangeText={(texto) => setRua(texto)}
-        value={rua}
-      />  
-      <Input 
-        placeholder="BAIRRO..."
-        onChangeText={(texto) => setBairro(texto)}
-        value={bairro}
-      />  
-      <Input 
-        placeholder="CIDADE..."
-        onChangeText={(texto) => setCidade(texto)}
-        value={cidade}
-      />  
-      <Input 
-        placeholder="NUMERO..."
-        onChangeText={(texto) => setNumero(texto)}
-        value={numero}
-      />  
-      <Input 
-        placeholder="COMPLEMENTO..."
-        onChangeText={(texto) => setComplemento(texto)}
-        value={complemento}
-      />  
-      <InputObs 
-        placeholder="OBSERVAÇÃO..."
-        onChangeText={(texto) => setObservacao(texto)}
-        value={observacao}
-      />  
-
+      <View>
+        <InputRNE
+          placeholder="NOME..."
+          onChangeText={(texto) => setNome(texto)}
+          value={nome}
+          errorMessage={error}
+        />  
+        <InputRNE
+          placeholder="TELEFONE..."
+          onChangeText={(texto) => setTelefone(texto)}
+          keyboardType="numeric"
+          value={telefone}
+        />  
+        <InputRNE
+          placeholder="RUA..."
+          onChangeText={(texto) => setRua(texto)}
+          value={rua}
+        />  
+        <InputRNE
+          placeholder="BAIRRO..."
+          onChangeText={(texto) => setBairro(texto)}
+          value={bairro}
+        />  
+        <InputRNE
+          placeholder="CIDADE..."
+          onChangeText={(texto) => setCidade(texto)}
+          value={cidade}
+        />  
+        <InputRNE
+          placeholder="NUMERO..."
+          onChangeText={(texto) => setNumero(texto)}
+          value={numero}
+        />  
+        <InputRNE
+          placeholder="COMPLEMENTO..."
+          onChangeText={(texto) => setComplemento(texto)}
+          value={complemento}
+        />  
+        <InputRNEObs
+          placeholder="OBSERVAÇÃO..."
+          onChangeText={(texto) => setObservacao(texto)}
+          value={observacao}
+        />  
+      </View>
       <Divisao>
-        <Botao>
-          <TextoBotao>Salvar</TextoBotao>
-        </Botao>
-        <Botao onPress={cadastrar}>
-          <TextoBotao>Salvar e Enviar</TextoBotao>
-        </Botao>
+        <BotaoEnviar onPress={cadastrar}/>
+        <BotaoSalvar onPress={ () => {} }/>
       </Divisao>
 
     </Container>

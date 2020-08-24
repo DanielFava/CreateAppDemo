@@ -65,6 +65,7 @@ function Home_Pendente() {
 function Home_Pendente_Cadastro({navigation}) {
   return(
     <Cadastro.Navigator
+      initialRouteName="Lista"
       screenOptions={{
         headerTitleAlign: "center",
         headerStyle: {
@@ -94,7 +95,7 @@ function Home_Pendente_Cadastro({navigation}) {
             <Container>
               <Botao
                 onPress={() => {
-                  navigation.navigate('Cadastro') 
+                  navigation.navigate('CadastroPedido') 
                 }}
               >
                 <Icon name="pluscircleo" size={30} color={colors.Menu} />
@@ -103,7 +104,13 @@ function Home_Pendente_Cadastro({navigation}) {
           ),
         }}
       />
-      <Cadastro.Screen name="Cadastro" component={CadastroStackScreen}/>
+      <Cadastro.Screen 
+        name="CadastroPedido" 
+        component={CadastroStackScreen}
+        options={{
+          title: 'Cadastro'
+        }}
+        />
     </Cadastro.Navigator>
   )
 }

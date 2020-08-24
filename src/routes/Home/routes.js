@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 import Home from '../../pages/Home/Index';
 
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { DrawerActions } from '@react-navigation/native';
 import {
   Container,

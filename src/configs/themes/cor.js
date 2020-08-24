@@ -28,6 +28,7 @@ const colors = {
    GreenDark:          '#253237',
    MaximumBlueGreen:   '#5BC0BE',
    TurquoiseBlue:      '#6FFFE9',
+   Vermelho:           '#FF0000',
 
 };
 

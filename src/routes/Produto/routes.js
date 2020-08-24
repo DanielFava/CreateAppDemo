@@ -29,7 +29,7 @@ function HomeApp({navigation}){
       }}
     >
       <StackNavigator.Screen 
-        name="DashBoard" 
+        name="Produtos" 
         component={Home}
         options={{
           headerLeft: () => (

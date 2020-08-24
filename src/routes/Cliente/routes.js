@@ -24,7 +24,7 @@ const PendenteStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 //Home
-function HomeStackScreen({navigation}) {
+function HomeStackScreen() {
   return(
     <HomeStack.Navigator>
       <HomeStack.Screen name="Clientes" component={HomeClientes}/>
@@ -32,7 +32,7 @@ function HomeStackScreen({navigation}) {
   )
 }
 
-function PendenteStackScreen({navigation}) {
+function PendenteStackScreen() {
   return(
     <PendenteStack.Navigator>
       <PendenteStack.Screen name="Pendentes" component={PendenteClientes}/>
@@ -40,7 +40,7 @@ function PendenteStackScreen({navigation}) {
   )
 }
 
-function CadastroStackScreen({navigation}) {
+function CadastroStackScreen() {
   return(
     <CadastroStack.Navigator>
       <CadastroStack.Screen name="Cadastros" component={CadastroClientes}/>
@@ -65,6 +65,7 @@ function Home_Pendente() {
 function Home_Pendente_Cadastro({navigation}) {
   return(
     <Cadastro.Navigator
+      initialRouteName="Lista"
       screenOptions={{
         headerTitleAlign: "center",
         headerStyle: {
@@ -94,7 +95,7 @@ function Home_Pendente_Cadastro({navigation}) {
             <Container>
               <Botao
                 onPress={() => {
-                  navigation.navigate('Cadastro') 
+                  navigation.navigate('CadastroCliente') 
                 }}
               >
                 <Icon name="pluscircleo" size={30} color={colors.Menu} />
@@ -103,7 +104,12 @@ function Home_Pendente_Cadastro({navigation}) {
           ),
         }}
       />
-      <Cadastro.Screen name="Cadastro" component={CadastroStackScreen}/>
+      <Cadastro.Screen 
+        name="CadastroCliente" 
+        component={CadastroStackScreen} 
+        options={{
+          title: 'Cadastro'
+        }}/>
     </Cadastro.Navigator>
   )
 }

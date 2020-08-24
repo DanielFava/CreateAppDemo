@@ -1,25 +1,29 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import colors from '../../../configs/themes/cor'
+import { Input, Button } from 'react-native-elements'
+ 
+export const Container = styled.View`
+  background-color: ${colors.Light};
+  flex: 1;
+`;
 
-export const Container = styled.ScrollView`
+export const View = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false
+})`
+  background-color: ${colors.Light};
   width: 100%;
   height: 100%;
-  background-color: ${colors.Light};
+  margin: 15px 0 0 0;
 `;
 
 export const Divisao = styled.View`
   flex-direction: row;
   justify-content: space-around;
-  height: 70px;
-`;
-
-export const Botao = styled.TouchableOpacity`
-  margin: 20px 0 20px 0;
-  border: 1px solid ${colors.Border};
   align-items: center;
-  justify-content: center;
-  width: 40%; 
-  background-color: ${colors.LightDark}; 
+  height: 80px;
+  position: relative;
+  bottom: 1px;
+  background-color: ${colors.Light};
 `;
 
 export const TextoBotao = styled.Text`
@@ -37,24 +41,55 @@ export const TextoBold = styled.Text`
   margin-bottom: 10px;
 `;
 
-export const Input = styled.TextInput.attrs({
+export const InputRNE = styled(Input).attrs({
   autoCapitalize: 'none',
   autoCorrect: false,
   underlineColorAndroid: 'transparent',
-  returnKeyType: 'next'
-})`
-  border: 1px solid ${colors.Black};
-  padding-left: 10px;
-  font-size: 16px;
-`;
+})``;
 
-export const InputObs = styled.TextInput.attrs({
+export const InputRNEObs = styled(Input).attrs({
   autoCapitalize: 'none',
   autoCorrect: false,
   underlineColorAndroid: 'transparent',
-  multiline: true
-})`
-  border: 1px solid ${colors.Black};
-  padding-left: 10px;
-  font-size: 16px;
-`;
+  multiline: true,
+})``;
+
+export const BotaoSalvar = styled(Button).attrs({
+  type: "outline",
+  title: "Salvar",
+  raised: true,
+  buttonStyle: { 
+    height: 50,
+    width: 100, 
+    backgroundColor: colors.EerieBlack, 
+    borderRadius: 10,
+  },
+  titleStyle: {
+    color: colors.Branco
+  },
+  containerStyle: { 
+    marginVertical: 5, 
+    height: 50, 
+    width: 100, 
+  },
+})``;
+
+export const BotaoEnviar = styled(Button).attrs({
+  type: "outline",
+  title: "Salvar e Enviar",
+  raised: true,
+  buttonStyle: { 
+    height: 50,
+    width: 100, 
+    backgroundColor: colors.TrueBlue, 
+    borderRadius: 10,
+  },
+  titleStyle: {
+    color: colors.Branco
+  },
+  containerStyle: { 
+    marginVertical: 5, 
+    height: 50, 
+    width: 100, 
+  },
+})``;
