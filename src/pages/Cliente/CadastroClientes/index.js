@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+// import React, { Component,useEffect, useState } from 'react'
 import moment from 'moment'
 import firebase from '../../../services/server/FirebaseConnection'
+import { Alert } from 'react-native'
 
 import { 
   Container,
@@ -14,6 +16,7 @@ import {
   TextoBold,
   TextoBotao
 } from '../CadastroClientes/Styles'
+
 
 export default function DashBoard({ navigation }) {
 
@@ -30,6 +33,8 @@ export default function DashBoard({ navigation }) {
 
   async function cadastrar(){
     if (nome !== ''){
+
+      setError('')
 
       let clientes = await firebase.database().ref('clientes');
       let chave = clientes.push().key;
@@ -53,14 +58,22 @@ export default function DashBoard({ navigation }) {
       setNumero('')
       setComplemento('')
       setObservacao('')
-      setError('')
 
-      alert('Cadastrado Com Sucesso !');
-
-      navigation.goBack();
+      Alert.alert(
+        "Sucesso",
+        "Dados cadastrados com sucesso !",
+        [
+          { 
+            text: "OK", 
+            onPress: () => navigation.goBack()
+          }
+        ],
+        { cancelable: false }
+      );
+      
     }
     else {
-      setError('Nome Invalido');
+      setError( 'Nome Invalido' );
     }
   }
 
@@ -72,7 +85,7 @@ export default function DashBoard({ navigation }) {
         <InputRNE
           placeholder="NOME..."
           onChangeText={(texto) => setNome(texto)}
-          value={nome}
+          value={nome} 
           errorMessage={error}
         />  
         <InputRNE
@@ -113,8 +126,8 @@ export default function DashBoard({ navigation }) {
         />  
       </View>
       <Divisao>
-        <BotaoEnviar onPress={cadastrar}/>
-        <BotaoSalvar onPress={ () => {} }/>
+        <BotaoEnviar onPress={ cadastrar}/>
+        <BotaoSalvar onPress={ ()=>{} }/>
       </Divisao>
 
     </Container>

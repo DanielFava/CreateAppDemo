@@ -17,7 +17,7 @@ import {
   Loading,
 } from '../ListaClientes/Styles';
 
-export default function DashBoard() {
+export default function DashBoard({navigation}) {
 
   const [clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,17 +39,12 @@ export default function DashBoard() {
             complemento: chilItem.val().complemento,
             observacao: chilItem.val().observacao
           }
-
-          setClientes(oldArray => [...oldArray, data].reverse())
+          setClientes(oldArray => [...oldArray, data].reverse());
         })
-
         setLoading(false)
-
       })
     }
-
     dados();
-    
   }, []);
 
   async function handleDelete(key){
@@ -69,6 +64,10 @@ export default function DashBoard() {
     );
   }
 
+  function handleEdit(data){
+    navigation.navigate('CadastroCliente', { params: data})
+  }
+
   return (
     <Container>
       { loading ? 
@@ -79,7 +78,7 @@ export default function DashBoard() {
           <Flatlist 
             keyExtractor={item => item.key.toString()}
             data={clientes}
-            renderItem={ ({item}) => ( <Listagem data={item} deleteItem={handleDelete} /> ) }
+            renderItem={ ({item}) => ( <Listagem data={item} deleteItem={handleDelete} editItem={handleEdit}/> ) }
           />
         ) 
       }
@@ -87,3 +86,4 @@ export default function DashBoard() {
     </Container>
   )
 }
+

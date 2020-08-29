@@ -1,4 +1,5 @@
 import React from 'react'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import {
   Container, 
   Botao,
@@ -13,9 +14,7 @@ import {
   ViewEditar,
 } from './Styles-Listagem'
 
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-
-export default function Listagem({ data, deleteItem }){
+export default function Listagem({ data, deleteItem, editItem }){
   return(
     <Container>
       <Divisao>
@@ -26,11 +25,11 @@ export default function Listagem({ data, deleteItem }){
           </BotaoContainer>
         </ViewContainer>
         <ViewBotao>
-          <Botao>
+          <Botao onPress={() => editItem(data) }>
             <Icon name="square-edit-outline" size={25} />
           </Botao>
           <Linha />
-          <Botao onPress={() => deleteItem(data.key)}>
+          <Botao onPress={() => deleteItem(data.key)} >
             <Icon name="delete-circle-outline" size={25} />
           </Botao>
         </ViewBotao>
