@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // import React, { Component,useEffect, useState } from 'react'
 import moment from 'moment'
-import firebase from '../../../services/server/FirebaseConnection'
+import firebase from '../../../services/server/firebaseConnection'
 import { Alert } from 'react-native'
 
 import { 
@@ -15,26 +15,60 @@ import {
   Texto,
   TextoBold,
   TextoBotao
-} from '../CadastroClientes/Styles'
+} from '../CadastroClientes/styles'
 
 
-export default function DashBoard({ navigation }) {
+export default function DashBoard({ navigation, route }) {
 
-  const [nome, setNome] = useState('')
-  const [telefone, setTelefone] = useState('')
-  const [rua, setRua] = useState('')
-  const [bairro, setBairro] = useState('')
-  const [cidade, setCidade] = useState('')
-  const [numero, setNumero] = useState('')
-  const [complemento, setComplemento] = useState('')
-  const [observacao, setObservacao] = useState('')
-
+  const [nome, setNome] = useState(!route.params.params ? '' : route.params.params.params.nome)
+  const [telefone, setTelefone] = useState(!route.params.params ? '' : route.params.params.params.telefone)
+  const [rua, setRua] = useState(!route.params.params ? '' : route.params.params.params.rua)
+  const [bairro, setBairro] = useState(!route.params.params ? '' : route.params.params.params.bairro)
+  const [cidade, setCidade] = useState(!route.params.params ? '' : route.params.params.params.cidade)
+  const [numero, setNumero] = useState(!route.params.params ? '' : route.params.params.params.numero)
+  const [complemento, setComplemento] = useState(!route.params.params ? '' : route.params.params.params.complemento)
+  const [observacao, setObservacao] = useState(!route.params.params ? '' : route.params.params.params.observacao)
   const [error, setError] = useState('')
 
   async function cadastrar(){
     if (nome !== ''){
 
-      setError('')
+      if ( route.params.params !== undefined ) {
+        await firebase.database().ref('clientes').child(route.params.params.params.key).update({
+          nome: nome,
+          telefone: telefone,
+          rua: rua,
+          bairro: bairro,
+          cidade: cidade,
+          numero: numero,
+          complemento: complemento,
+          observacao: observacao
+        })
+        setNome('')
+        setTelefone('')
+        setRua('')
+        setBairro('')
+        setCidade('')
+        setNumero('')
+        setComplemento('')
+        setObservacao('')
+        setError('')
+
+        Alert.alert(
+          "Sucesso",
+          "Dados alterados com sucesso !",
+          [
+            { 
+              text: "OK", 
+              onPress: () => navigation.goBack()
+            }
+          ],
+          { cancelable: false }
+        );
+
+        return;
+
+      }
 
       let clientes = await firebase.database().ref('clientes');
       let chave = clientes.push().key;
@@ -58,6 +92,7 @@ export default function DashBoard({ navigation }) {
       setNumero('')
       setComplemento('')
       setObservacao('')
+      setError('')
 
       Alert.alert(
         "Sucesso",
@@ -82,12 +117,14 @@ export default function DashBoard({ navigation }) {
       behavior={Platform.OS == "ios" ? "padding" : "height"}
     >
       <View>
+        
         <InputRNE
           placeholder="NOME..."
           onChangeText={(texto) => setNome(texto)}
-          value={nome} 
-          errorMessage={error}
-        />  
+          value={ nome } 
+          errorMessage={error} 
+        />
+
         <InputRNE
           placeholder="TELEFONE..."
           onChangeText={(texto) => setTelefone(texto)}

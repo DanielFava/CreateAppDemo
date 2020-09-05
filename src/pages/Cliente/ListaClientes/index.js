@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import firebase from '../../../services/server/FirebaseConnection'
+import firebase from '../../../services/server/firebaseConnection'
 import Listagem from './Listagem'
 import { Alert } from 'react-native'
 
@@ -15,7 +15,7 @@ import {
   TextoBotao,
   Flatlist,
   Loading,
-} from '../ListaClientes/Styles';
+} from '../ListaClientes/styles';
 
 export default function DashBoard({navigation}) {
 
@@ -65,7 +65,7 @@ export default function DashBoard({navigation}) {
   }
 
   function handleEdit(data){
-    navigation.navigate('CadastroCliente', { params: data})
+    navigation.navigate('CadastroCliente', { params: data })
   }
 
   return (

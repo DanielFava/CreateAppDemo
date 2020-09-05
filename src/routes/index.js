@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import HomeRoutes from './App.Routes';
+import HomeRoutes from './app.routes';
 import 'react-native-gesture-handler';
 import '../configs/Status_Bar';
 

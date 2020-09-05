@@ -2,9 +2,9 @@ import React from 'react';
 import colors from '../../configs/themes/cor';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import CadastroPedidos from '../../pages/Pedido/CadastroPedidos/Index';
-import HomePedidos from '../../pages/Pedido/ListaPedidos/Index';
-import PendentePedidos from '../../pages/Pedido/PendentePedidos/Index';
+import CadastroPedidos from '../../pages/Pedido/CadastroPedidos/index';
+import HomePedidos from '../../pages/Pedido/ListaPedidos/index';
+import PendentePedidos from '../../pages/Pedido/PendentePedidos/index';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,7 +13,7 @@ import {
   Container,
   Botao,
   Texto 
-} from '../Pedido/Styles'; 
+} from '../Pedido/styles'; 
 
 const HomeStack = createStackNavigator();
 const CadastroStack = createStackNavigator();
@@ -24,26 +24,26 @@ const PendenteStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 //Home
-function HomeStackScreen() {
+function HomeStackScreen({route}) {
   return(
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Pedidos" component={HomePedidos}/>
+      <HomeStack.Screen name="Pedidos" component={HomePedidos} initialParams={route}/>
     </HomeStack.Navigator>
   )
 }
 
-function PendenteStackScreen() {
+function PendenteStackScreen({route}) {
   return(
     <PendenteStack.Navigator>
-      <PendenteStack.Screen name="Pendentes" component={PendentePedidos}/>
+      <PendenteStack.Screen name="Pendentes" component={PendentePedidos} initialParams={route}/>
     </PendenteStack.Navigator>
   )
 }
 
-function CadastroStackScreen() {
+function CadastroStackScreen({route}) {
   return(
     <CadastroStack.Navigator>
-      <CadastroStack.Screen name="Cadastros" component={CadastroPedidos}/>
+      <CadastroStack.Screen name="Cadastros" component={CadastroPedidos} initialParams={route}/>
     </CadastroStack.Navigator>
   )
 }

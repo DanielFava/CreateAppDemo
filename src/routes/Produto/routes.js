@@ -2,7 +2,7 @@ import React from 'react';
 import colors from '../../configs/themes/cor';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import Home from '../../pages/Produto/Index';
+import Home from '../../pages/Produto/index';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import { DrawerActions } from '@react-navigation/native';
@@ -10,7 +10,7 @@ import {
   Container,
   Botao,
   Texto 
-} from '../Produto/Styles' 
+} from '../Produto/styles' 
 
 const StackNavigator = createStackNavigator();
 

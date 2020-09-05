@@ -2,9 +2,9 @@ import React from 'react';
 import colors from '../../configs/themes/cor';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import CadastroClientes from '../../pages/Cliente/CadastroClientes/Index';
-import HomeClientes from '../../pages/Cliente/ListaClientes/Index';
-import PendenteClientes from '../../pages/Cliente/PendenteClientes/Index';
+import CadastroClientes from '../../pages/Cliente/CadastroClientes/index';
+import HomeClientes from '../../pages/Cliente/ListaClientes/index';
+import PendenteClientes from '../../pages/Cliente/PendenteClientes/index';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,7 +13,7 @@ import {
   Container,
   Botao,
   Texto 
-} from '../Cliente/Styles'; 
+} from '../Cliente/styles';
 
 const HomeStack = createStackNavigator();
 const CadastroStack = createStackNavigator();
@@ -24,26 +24,26 @@ const PendenteStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 //Home
-function HomeStackScreen() {
+function HomeStackScreen({route}) {
   return(
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Clientes" component={HomeClientes}/>
+      <HomeStack.Screen name="Clientes" component={HomeClientes} initialParams={route}/>
     </HomeStack.Navigator>
   )
 }
 
-function PendenteStackScreen() {
+function PendenteStackScreen({route}) {
   return(
     <PendenteStack.Navigator>
-      <PendenteStack.Screen name="Pendentes" component={PendenteClientes}/>
+      <PendenteStack.Screen name="Pendentes" component={PendenteClientes} initialParams={route}/>
     </PendenteStack.Navigator>
   )
 }
 
-function CadastroStackScreen() {
+function CadastroStackScreen({route}) {
   return(
     <CadastroStack.Navigator>
-      <CadastroStack.Screen name="Cadastros" component={CadastroClientes}/>
+      <CadastroStack.Screen name="Cadastros" component={CadastroClientes} initialParams={route}/>
     </CadastroStack.Navigator>
   )
 }

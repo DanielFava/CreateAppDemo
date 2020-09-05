@@ -5,12 +5,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import HomeApp from './Home/Routes' 
-import ClienteApp from './Cliente/Routes'
-import PedidoApp from './Pedido/Routes'
-import ProdutoApp from './Produto/Routes'
+import HomeApp from './Home/routes' 
+import ClienteApp from './Cliente/routes'
+import PedidoApp from './Pedido/routes'
+import ProdutoApp from './Produto/routes'
 
-import DrawerContent from '../pages/DrawerContent/Index'
+import DrawerContent from '../pages/DrawerContent/index'
 
 const Drawer = createDrawerNavigator();
 

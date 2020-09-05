@@ -6,7 +6,7 @@ import {
 
 import { 
   Container
-} from './Styles'
+} from './styles'
 
 function DrawerContent({...props}) {
   return(
