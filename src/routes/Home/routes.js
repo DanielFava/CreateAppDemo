@@ -9,43 +9,43 @@ import { DrawerActions } from '@react-navigation/native';
 import {
   Container,
   Botao,
-  Texto 
-} from '../Home/styles' 
+  Texto
+} from '../Home/styles'
 
 const StackNavigator = createStackNavigator();
 
 function HomeApp({navigation}){
-  return(
-    <StackNavigator.Navigator
-      screenOptions={{
-        headerTitleAlign: "center",
-        headerStyle: {
-          backgroundColor: colors.GreenDark,
-        },
-        headerTintColor: colors.Branco,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}
-    >
-      <StackNavigator.Screen 
-        name="DashBoard" 
-        component={Home}
-        options={{
-          headerLeft: () => (
-            <Container>
-              <Botao
-                onPress={() => {
-                  navigation.dispatch(DrawerActions.openDrawer()) 
-                }}>
-                <Icon name="menuunfold" size={30} color={colors.Menu} />
-              </Botao>
-            </Container>
-          ),
-        }}
-      />
-    </StackNavigator.Navigator>
-  )
+   return(
+      <StackNavigator.Navigator
+         screenOptions={{
+            headerTitleAlign: "center",
+            headerStyle: {
+               backgroundColor: colors.GreenDark,
+            },
+            headerTintColor: colors.Branco,
+            headerTitleStyle: {
+               fontWeight: 'bold',
+            },
+         }}
+      >
+         <StackNavigator.Screen
+            name="DashBoard"
+            component={Home}
+            options={{
+               headerLeft: () => (
+                  <Container>
+                  <Botao
+                     onPress={() => {
+                        navigation.dispatch(DrawerActions.openDrawer())
+                     }}>
+                     <Icon name="menuunfold" size={30} color={colors.Menu} />
+                  </Botao>
+                  </Container>
+               ),
+            }}
+         />
+      </StackNavigator.Navigator>
+   )
 }
 
 export default HomeApp;

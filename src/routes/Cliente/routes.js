@@ -12,7 +12,7 @@ import { DrawerActions } from '@react-navigation/native';
 import {
   Container,
   Botao,
-  Texto 
+  Texto
 } from '../Cliente/styles';
 
 const HomeStack = createStackNavigator();
@@ -41,77 +41,78 @@ function PendenteStackScreen({route}) {
 }
 
 function CadastroStackScreen({route}) {
-  return(
-    <CadastroStack.Navigator>
-      <CadastroStack.Screen name="Cadastros" component={CadastroClientes} initialParams={route}/>
-    </CadastroStack.Navigator>
-  )
+   return(
+      <CadastroStack.Navigator>
+         <CadastroStack.Screen name="Cadastros" component={CadastroClientes} initialParams={route}/>
+      </CadastroStack.Navigator>
+   )
 }
 
 function Home_Pendente() {
-  return(
-    <Tab.Navigator
-      initialRouteName="Clientes"
-      tabBarOptions={{
-        labelPosition: "beside-icon"
-      }}
-    >
-      <Tab.Screen name="Clientes" component={HomeStackScreen}/>
-      <Tab.Screen name="Pendentes" component={PendenteStackScreen}/>
-    </Tab.Navigator>
-  )
+   return(
+      <Tab.Navigator
+         initialRouteName="Clientes"
+         tabBarOptions={{
+         labelPosition: "beside-icon"
+         }}
+      >
+         <Tab.Screen name="Clientes" component={HomeStackScreen}/>
+         <Tab.Screen name="Pendentes" component={PendenteStackScreen}/>
+      </Tab.Navigator>
+   )
 }
 
 function Home_Pendente_Cadastro({navigation}) {
-  return(
-    <Cadastro.Navigator
-      initialRouteName="Lista"
-      screenOptions={{
-        headerTitleAlign: "center",
-        headerStyle: {
-          backgroundColor: colors.GreenDark,
-        },
-        headerTintColor: colors.Branco,
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}
-    >
-      <Cadastro.Screen 
-        name="Lista" 
-        component={Home_Pendente}
-        options={{
-          headerLeft: () => (
-            <Container>
-              <Botao
-                onPress={() => {
-                  navigation.dispatch(DrawerActions.openDrawer()) 
-                }}>
-                <Icon name="menuunfold" size={30} color={colors.Menu} />
-              </Botao>
-            </Container>
-          ),
-          headerRight: () => (
-            <Container>
-              <Botao
-                onPress={() => {
-                  navigation.navigate('CadastroCliente') 
-                }}
-              >
-                <Icon name="pluscircleo" size={30} color={colors.Menu} />
-              </Botao>
-            </Container>
-          ),
-        }}
-      />
-      <Cadastro.Screen 
-        name="CadastroCliente" 
-        component={CadastroStackScreen} 
-        options={{
-          title: 'Cadastro'
-        }}/>
-    </Cadastro.Navigator>
-  )
+   return(
+      <Cadastro.Navigator
+         initialRouteName="Lista"
+         screenOptions={{
+            headerTitleAlign: "center",
+            headerStyle: {
+               backgroundColor: colors.GreenDark,
+            },
+            headerTintColor: colors.Branco,
+            headerTitleStyle: {
+               fontWeight: 'bold',
+            },
+         }}
+      >
+         <Cadastro.Screen
+            name="Lista"
+            component={Home_Pendente}
+            options={{
+               headerLeft: () => (
+                  <Container>
+                  <Botao
+                     onPress={() => {
+                        navigation.dispatch(DrawerActions.openDrawer())
+                     }}>
+                     <Icon name="menuunfold" size={30} color={colors.Menu} />
+                  </Botao>
+                  </Container>
+               ),
+               headerRight: () => (
+                  <Container>
+                  <Botao
+                     onPress={() => {
+                        navigation.navigate('CadastroCliente')
+                     }}
+                  >
+                     <Icon name="pluscircleo" size={30} color={colors.Menu} />
+                  </Botao>
+                  </Container>
+               ),
+            }}
+         />
+         <Cadastro.Screen
+            name="CadastroCliente"
+            component={CadastroStackScreen}
+            options={{
+               title: 'Cadastro'
+            }}
+         />
+      </Cadastro.Navigator>
+   )
 }
 
 export default Home_Pendente_Cadastro;

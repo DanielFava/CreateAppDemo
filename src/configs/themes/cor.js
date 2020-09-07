@@ -7,7 +7,7 @@ const colors = {
    Manatee:            '#979DAC',
    LightDark:          '#9DB4C0',
    Border:             '#AACCDD',
-   
+
    EerieBlack:         '#242423',
    Jet:                '#333533',
    Menu:               '#C2DFE3',
@@ -15,7 +15,7 @@ const colors = {
    Timberwolf:         '#CFDBD5',
    Alabaster:          '#E8EDDF',
    Branco:             '#FFFFFF',
-   
+
    Black:              '#000000',
    OxfordBlueDark:     '#0B132B',
    OxfordBlueMedium:   '#001233',
@@ -24,7 +24,7 @@ const colors = {
    DarkCornflowerBlue: '#023E7D',
    USAFABlue:          '#0353A4',
    TrueBlue:           '#0466C8',
-   
+
    GreenDark:          '#253237',
    MaximumBlueGreen:   '#5BC0BE',
    TurquoiseBlue:      '#6FFFE9',
