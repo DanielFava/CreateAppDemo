@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import firebase from '../../services/server/firebaseConnection'
 import colors from '../../configs/themes/cor'
@@ -44,19 +44,24 @@ const Labels = ({ x, y, bandwidth, data }) => (
 
 // Aplicação Home
 export default function DashBoard({ navigation }) {
+
+   const [ cliente, setCliente ] = useState(0);
+   const [ pedido, setPedido ] = useState(0);
+   const [ produto, setProduto ] = useState(0);
+
    return (
    <Container>
          <Divisao>
             <Caixa cor={ colors.Border } >
-               <Texto>0</Texto>
+               <Texto>{pedido}</Texto>
                <Texto>Pedidos</Texto>
             </Caixa>
             <Caixa cor={ colors.LightDark } >
-               <Texto>0</Texto>
+               <Texto>{cliente}</Texto>
                <Texto>Clientes</Texto>
             </Caixa>
             <Caixa cor={ colors.Manatee } >
-               <Texto>0</Texto>
+               <Texto>{produto}</Texto>
                <Texto>Produtos</Texto>
             </Caixa>
          </Divisao>
